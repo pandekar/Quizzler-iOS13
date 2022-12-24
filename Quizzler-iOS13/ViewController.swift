@@ -72,21 +72,21 @@ class ViewController: UIViewController {
     // trigger button animation
     func animateUIButton(buttonPressed: String, color: UIColor) {
         if (buttonPressed == "True") {
-            buttonAnimation(whichButton: self.trueButton, color: color)
+            buttonAnimation(selectedButton: self.trueButton, color: color)
         } else {
-            buttonAnimation(whichButton: self.falseButton, color: color)
+            buttonAnimation(selectedButton: self.falseButton, color: color)
         }
     }
     
     // UIButton Animation
-    func buttonAnimation(whichButton: UIButton, color: UIColor) {
-        UIView.animate(withDuration: 0.3) {
-            whichButton.backgroundColor = color
+    func buttonAnimation(selectedButton: UIButton, color: UIColor) {
+        UIView.animate(withDuration: 0.2) {
+            selectedButton.backgroundColor = color
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            UIView.animate(withDuration: 0.3) {
-                whichButton.backgroundColor = nil
+            UIView.animate(withDuration: 0.2) {
+                selectedButton.backgroundColor = nil
             }
         }
     }
