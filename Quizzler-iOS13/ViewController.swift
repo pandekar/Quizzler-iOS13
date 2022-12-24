@@ -47,17 +47,14 @@ class ViewController: UIViewController {
         let actualAnswer: Bool = quiz[questionNumber].answer
         
         if (submittedAnswer == actualAnswer) && (questionNumber < quiz.count - 1) {
-            print("Right!")
             questionNumber += 1
             updateUI()
             animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
         } else if (submittedAnswer == actualAnswer) && (questionNumber == quiz.count - 1) {
-            print("Done")
             questionNumber = 0
             updateUI()
             animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
         } else {
-            print("Wrong!")
             animateUIButton(buttonPressed: buttonTitle, color: answerWrongColor)
         }
         
@@ -65,7 +62,7 @@ class ViewController: UIViewController {
     
     func updateUI() {
         if questionNumber == 0 {
-            progressBar.progress = 0.0
+            progressBar.progress = 1/Float(quiz.count)
             questionLabel.text = quiz[questionNumber].text
         } else {
             progressBar.progress += 1/Float(quiz.count)
