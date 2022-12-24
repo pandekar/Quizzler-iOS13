@@ -32,6 +32,8 @@ class ViewController: UIViewController {
     ]
     
     var questionNumber: Int = 0
+    let answerRightColor: UIColor = UIColor.green
+    let answerWrongColor: UIColor = UIColor.red
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +42,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        let submittedAnswer: Bool = Bool(sender.currentTitle!.lowercased())!
+        let buttonTitle: String = sender.currentTitle!
+        let submittedAnswer: Bool = Bool(buttonTitle.lowercased())!
         let actualAnswer: Bool = quiz[questionNumber].answer
         
         if (submittedAnswer == actualAnswer) && (questionNumber < quiz.count - 1) {
             print("Right!")
             questionNumber += 1
             updateUI()
+            animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
         } else if (submittedAnswer == actualAnswer) && (questionNumber == quiz.count - 1) {
             print("Done")
             questionNumber = 0
             updateUI()
+            animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
         } else {
             print("Wrong!")
+            animateUIButton(buttonPressed: buttonTitle, color: answerWrongColor)
         }
         
     }
@@ -60,6 +66,28 @@ class ViewController: UIViewController {
     func updateUI() {
         if questionNumber < quiz.count {
             questionLabel.text = quiz[questionNumber].text
+        }
+    }
+    
+    // trigger button animation
+    func animateUIButton(buttonPressed: String, color: UIColor) {
+        if (buttonPressed == "True") {
+            buttonAnimation(whichButton: self.trueButton, color: color)
+        } else {
+            buttonAnimation(whichButton: self.falseButton, color: color)
+        }
+    }
+    
+    // UIButton Animation
+    func buttonAnimation(whichButton: UIButton, color: UIColor) {
+        UIView.animate(withDuration: 0.3) {
+            whichButton.backgroundColor = color
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            UIView.animate(withDuration: 0.3) {
+                whichButton.backgroundColor = nil
+            }
         }
     }
 }
