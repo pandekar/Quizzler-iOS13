@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         if questionNumber == 0 {
             progressBar.progress = 0.0
             questionLabel.text = quiz[questionNumber].text
-        } else if (questionNumber < quiz.count) {
+        } else {
             progressBar.progress += 1/Float(quiz.count)
             questionLabel.text = quiz[questionNumber].text
         }
