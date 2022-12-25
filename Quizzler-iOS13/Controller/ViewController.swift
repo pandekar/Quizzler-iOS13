@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         updateUI()
     }
 
+    //answer button pressed
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         let buttonTitle: String = sender.currentTitle!
         let submittedAnswer: String = buttonTitle.lowercased()
@@ -38,8 +39,8 @@ class ViewController: UIViewController {
         
     }
     
+    // update UI
     func updateUI() {
-        
         if quizBrain.getCurrentQuestionNumber() == 0 {
             progressBar.progress = 1/Float(quizBrain.getTotalQuestionNumber())
         } else {
