@@ -34,6 +34,11 @@ struct QuizBrain {
         return quiz.count
     }
     
+    // get bar progress
+    func getBarProgress() -> Float {
+        return 1/Float(self.getTotalQuestionNumber())
+    }
+    
     // get current question number
     func getCurrentQuestionNumber() -> Int {
         return questionNumber

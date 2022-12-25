@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         let submittedAnswer: String = buttonTitle.lowercased()
         let isAnswerRight: Bool = quizBrain.checkAnswer(submittedAnswer)
         
-        if isAnswerRight {
+        if isAnswerRight  {
             updateUI()
             animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
         } else {
@@ -43,9 +43,9 @@ class ViewController: UIViewController {
     // update UI
     func updateUI() {
         if quizBrain.getCurrentQuestionNumber() == 0 {
-            progressBar.progress = 1/Float(quizBrain.getTotalQuestionNumber())
+            progressBar.progress = quizBrain.getBarProgress()
         } else {
-            progressBar.progress += 1/Float(quizBrain.getTotalQuestionNumber())
+            progressBar.progress += quizBrain.getBarProgress()
         }
         
         questionLabel.text = quizBrain.getQuizText()
