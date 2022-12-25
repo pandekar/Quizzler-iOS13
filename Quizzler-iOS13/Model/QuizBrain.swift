@@ -29,9 +29,17 @@ struct QuizBrain {
     // question number
     var questionNumber: Int = 0
     
+    // quiz score
+    var questionScore: Int = 0
+    
     // get total question number
     func getTotalQuestionNumber() -> Int {
         return quiz.count
+    }
+    
+    // get quiz score
+    func getScoreText() -> String {
+        return "Score: \(questionScore)"
     }
     
     // get bar progress
@@ -55,9 +63,11 @@ struct QuizBrain {
         
         if(userAnswer == quiz[questionNumber].answer) && (questionNumber < quiz.count - 1) {
             self.questionNumber += 1
+            self.questionScore += 1
             return true
         } else if(userAnswer == quiz[questionNumber].answer) && (questionNumber == quiz.count - 1) {
             self.questionNumber = 0
+            self.questionScore = 0
             return true
         } else {
             return false

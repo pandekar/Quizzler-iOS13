@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var trueButton: UIButton!
@@ -49,6 +50,7 @@ class ViewController: UIViewController {
         }
         
         questionLabel.text = quizBrain.getQuizText()
+        scoreLabel.text = quizBrain.getScoreText ()
     }
     
     // trigger button animation
