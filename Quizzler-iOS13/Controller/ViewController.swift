@@ -29,8 +29,9 @@ class ViewController: UIViewController {
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         let buttonTitle: String = sender.currentTitle!
         let submittedAnswer: String = buttonTitle.lowercased()
+        let isAnswerRight: Bool = quizBrain.checkAnswer(submittedAnswer)
         
-        if quizBrain.checkAnswer(submittedAnswer) {
+        if isAnswerRight {
             updateUI()
             animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
         } else {
