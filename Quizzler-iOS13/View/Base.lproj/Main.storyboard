@@ -106,12 +106,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="firstAnswer" destination="6QR-rm-Yfb" id="Fbj-Ta-Vwz"/>
+                        <outlet property="buttonFirstAnswer" destination="6QR-rm-Yfb" id="OB7-9f-KlS"/>
+                        <outlet property="buttonSecondAnswer" destination="oVw-Hl-IRe" id="9Qp-y1-FU6"/>
+                        <outlet property="buttonThirdAnswer" destination="tbn-vQ-GyC" id="bb6-CM-N8d"/>
                         <outlet property="progressBar" destination="TXm-qh-7Xg" id="K1Y-EA-ubx"/>
                         <outlet property="questionLabel" destination="rSI-li-mhO" id="Jnk-XI-CbD"/>
                         <outlet property="scoreLabel" destination="Hhl-gw-Lgd" id="U8j-nN-Iac"/>
-                        <outlet property="secondAnswer" destination="oVw-Hl-IRe" id="HsB-9a-PtG"/>
-                        <outlet property="thirdAnswer" destination="tbn-vQ-GyC" id="ksf-yE-Iyh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

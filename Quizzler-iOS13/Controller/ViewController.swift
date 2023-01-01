@@ -13,9 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var firstAnswer: UIButton!
-    @IBOutlet weak var secondAnswer: UIButton!
-    @IBOutlet weak var thirdAnswer: UIButton!
+    @IBOutlet weak var buttonFirstAnswer: UIButton!
+    @IBOutlet weak var buttonSecondAnswer: UIButton!
+    @IBOutlet weak var buttonThirdAnswer: UIButton!
     
     var quizBrain: QuizBrain = QuizBrain()
     let answerRightColor: UIColor = UIColor.green
@@ -51,12 +51,12 @@ class ViewController: UIViewController {
         }
         
         questionLabel.text = quizBrain.getQuizText()
-        firstAnswer.tag = 0
-        secondAnswer.tag = 1
-        thirdAnswer.tag = 2
-        firstAnswer.setTitle(quizBrain.getQuizAnswerFirst(), for: .normal)
-        secondAnswer.setTitle(quizBrain.getQuizAnswerSecond(), for: .normal)
-        thirdAnswer.setTitle(quizBrain.getQuizAnswerThird(), for: .normal)
+        buttonFirstAnswer.tag = 0
+        buttonSecondAnswer.tag = 1
+        buttonThirdAnswer.tag = 2
+        buttonFirstAnswer.setTitle(quizBrain.getQuizAnswerFirst(), for: .normal)
+        buttonSecondAnswer.setTitle(quizBrain.getQuizAnswerSecond(), for: .normal)
+        buttonThirdAnswer.setTitle(quizBrain.getQuizAnswerThird(), for: .normal)
         scoreLabel.text = quizBrain.getScoreText ()
     }
     
@@ -64,11 +64,11 @@ class ViewController: UIViewController {
     func animateUIButton(_ buttonPressedTag: Int, _ color: UIColor) {
         switch buttonPressedTag {
         case 0:
-            buttonAnimation(selectedButton: self.firstAnswer, color: color)
+            buttonAnimation(selectedButton: self.buttonFirstAnswer, color: color)
         case 1:
-            buttonAnimation(selectedButton: self.secondAnswer, color: color)
+            buttonAnimation(selectedButton: self.buttonSecondAnswer, color: color)
         default:
-            buttonAnimation(selectedButton: self.thirdAnswer, color: color)
+            buttonAnimation(selectedButton: self.buttonThirdAnswer, color: color)
         }
     }
     
