@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var firstAnswer: UIButton!
+    @IBOutlet weak var secondAnswer: UIButton!
+    @IBOutlet weak var thirdAnswer: UIButton!
     
     var quizBrain: QuizBrain = QuizBrain()
     let answerRightColor: UIColor = UIColor.green
@@ -28,15 +29,15 @@ class ViewController: UIViewController {
 
     //answer button pressed
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        let buttonTitle: String = sender.currentTitle!
-        let submittedAnswer: String = buttonTitle.lowercased()
+        let submittedAnswer: String = sender.currentTitle!
         let isAnswerRight: Bool = quizBrain.checkAnswer(submittedAnswer)
-        
+        let buttonPressed: Int = sender.tag
+
         if isAnswerRight  {
             updateUI()
-            animateUIButton(buttonPressed: buttonTitle, color: answerRightColor)
+            animateUIButton(buttonPressed, answerRightColor)
         } else {
-            animateUIButton(buttonPressed: buttonTitle, color: answerWrongColor)
+            animateUIButton(buttonPressed, answerWrongColor)
         }
         
     }
@@ -50,15 +51,24 @@ class ViewController: UIViewController {
         }
         
         questionLabel.text = quizBrain.getQuizText()
+        firstAnswer.tag = 0
+        secondAnswer.tag = 1
+        thirdAnswer.tag = 2
+        firstAnswer.setTitle(quizBrain.getQuizAnswerFirst(), for: .normal)
+        secondAnswer.setTitle(quizBrain.getQuizAnswerSecond(), for: .normal)
+        thirdAnswer.setTitle(quizBrain.getQuizAnswerThird(), for: .normal)
         scoreLabel.text = quizBrain.getScoreText ()
     }
     
     // trigger button animation
-    func animateUIButton(buttonPressed: String, color: UIColor) {
-        if (buttonPressed == "True") {
-            buttonAnimation(selectedButton: self.trueButton, color: color)
-        } else {
-            buttonAnimation(selectedButton: self.falseButton, color: color)
+    func animateUIButton(_ buttonPressedTag: Int, _ color: UIColor) {
+        switch buttonPressedTag {
+        case 0:
+            buttonAnimation(selectedButton: self.firstAnswer, color: color)
+        case 1:
+            buttonAnimation(selectedButton: self.secondAnswer, color: color)
+        default:
+            buttonAnimation(selectedButton: self.thirdAnswer, color: color)
         }
     }
     
