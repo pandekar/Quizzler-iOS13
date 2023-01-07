@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         buttonFirstAnswer.setTitle(quizBrain.getQuizAnswerFirst(), for: .normal)
         buttonSecondAnswer.setTitle(quizBrain.getQuizAnswerSecond(), for: .normal)
         buttonThirdAnswer.setTitle(quizBrain.getQuizAnswerThird(), for: .normal)
-        scoreLabel.text = quizBrain.getScoreText ()
+        scoreLabel.text = quizBrain.getScoreText()
     }
     
     // trigger button animation
